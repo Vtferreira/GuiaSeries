@@ -186,5 +186,35 @@ class SerieDAO implements Armazenavel {
         $arquivoJSON = json_encode($series);
         echo $arquivoJSON;
     }
-
+    public function deletaUsuarioSerie($usuario_id,$serie_id){
+        $query = "DELETE FROM usuarioserie WHERE usuario_id = {$usuario_id} AND serie_id = {$serie_id}";
+        $resultado = mysqli_query($this->conexao,$query);
+        return $resultado;
+    }
+    /*Verifica se a série pesquisada está na lista do usuário*/
+    public function verificaUsuarioSerie($usuario_id,$serie_id,$status){
+        $query = "SELECT * FROM `usuarioserie` WHERE usuario_id = {$usuario_id} "
+        . "AND serie_id = {$serie_id} AND status = '{$status}'";
+        $resultado = mysqli_query($this->conexao, $query);
+        $linha = mysqli_fetch_assoc($resultado);
+        return $linha; 
+    }
+    public function insereUsuarioSerie($vetor){
+        /*
+         Se a série existir (diferente de nulo) na lista do usuário, excluir e inserir de novo      
+         Objetivo: não ficar com 2 registros no banco: um para Vou Assistir, outro para Assisti
+         */          
+        $sqlVerifica = "SELECT * FROM `usuarioserie` WHERE usuario_id = {$vetor["usuario_id"]} "
+        . "AND serie_id = {$vetor["serie_id"]}";
+        $resultadoVerifica = mysqli_query($this->conexao, $sqlVerifica);
+        $verificaFilme = mysqli_fetch_assoc($resultadoVerifica);
+        if($verificaFilme != NULL){
+            $excluiu = $this->deletaUsuarioSerie($vetor["usuario_id"],$vetor["serie_id"]);
+            echo $excluiu;
+        }
+        $query = "INSERT INTO usuarioserie(usuario_id, serie_id, status,data_adicionado) "
+                . "VALUES ({$vetor['usuario_id']},{$vetor['serie_id']},{$vetor['status']},'{$vetor['data_atual']}')";
+        $resultado = mysqli_query($this->conexao,$query);
+        return $resultado;
+    }
 }

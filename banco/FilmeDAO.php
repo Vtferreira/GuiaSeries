@@ -255,7 +255,7 @@ class FilmeDAO implements Armazenavel{
     }
     /*Realiza a consulta de totais por gênero. Exemplo: quantidade de filmes por gênero; total de minutos
         por gênero */
-    public function totalFilmePorGenero($usuario_id,$operacao,$condicao){
+    public function totalFilmePorGenero($usuario_id){
         $generos = array();
         $ordenaPor = "total_genero DESC";
         $query = "SELECT g.id, g.nome, COUNT(*) AS total_genero, SUM(f.duracao) AS total_minutos \n"
