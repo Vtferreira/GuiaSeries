@@ -1,0 +1,59 @@
+/*Media-querie para smartphones*/
+@media (max-width: 510px){
+	.container{
+		width: 95%;
+		margin: 0 auto;
+	}
+	.navbar-principal, .cadastro{
+		display: none;
+	}
+	header h1{
+		text-align: center;
+	}
+	header h1 img{
+		width: 55%;
+	}
+	.menu-categorias{
+		width: 100%;
+		margin-top: 0.5em;
+	}
+	.menu-categorias h2{
+		text-align: center;
+	}
+	.menu-categorias ul li{
+		width: 35%;
+		float: left;
+		text-align: center;
+		border: none;
+		padding-bottom: 0;
+	}
+	.menu-categorias ul li a{
+		border: none;
+	}
+	.menu-categorias ul li:last-child{
+		display: none;
+	}
+	.destaque img{
+		width: 100%;
+		height: 25em;
+	}
+	.painel{
+		width: 90%;
+		border: none;
+		box-shadow: none;
+		margin-top: 0.5em;
+		margin-left: 0.2em;
+		margin-bottom: 0.2em;
+		border-radius: 0;
+	}
+	.painel figure{
+		width: 100%;
+		/*float: left;*/
+	}
+	.mais-vistos h2{
+		text-align: center;
+	}
+	footer p{
+		margin-bottom: 0.5em;
+	}
+}

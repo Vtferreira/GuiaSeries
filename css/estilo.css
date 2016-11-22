@@ -1,0 +1,260 @@
+body{
+	font-family: "Lucida Sans Unicode", "Lucida Grande",sans-serif;
+}
+h1{
+	font-size: 36px;
+	font-family: "Verdana","Arial",sans-serif;
+}
+img[alt="Guia de Séries"]{
+	width: 210px;
+	height: 80px;
+}
+.container{
+	width: 940px;
+	margin: 0 auto;
+}
+/*configurações do cabeçalho da página*/
+.menu-principal ul li{
+	display: inline;
+	margin-right: 20px;
+}
+.menu-principal ul li a{
+	color: #00688B;
+	font-size: 16px;
+}
+.cadastro a{
+	color: #2E8B57;
+	font-size: 15px;
+}
+header{
+	position: relative;
+}
+.cadastro{
+	position: absolute;
+	top: 25px;
+	right: 0;
+	margin-right: 30px;
+}
+.menu-principal{
+	position: absolute;
+	margin-top: 5px;
+	/*bottom: 5px;*/
+	/*right: -20px;*/
+}
+#formBusca{
+	position: absolute;
+	margin-top: -5px;
+	right: 70px;
+}
+input[type="search"]{
+	font-size: 14px;
+	width: 100%;
+	padding: 5px 8px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	border: 2px solid #00868B;
+	border-right-style: none;
+}
+#btnBuscar{
+	font-size: 14px;
+	background-color: #009ACD;
+	border: none;
+	color: #FFFFE0;
+	padding: 7px 18px;
+	cursor: pointer;
+	position: absolute;
+	bottom:0;
+	right: -70px;
+}
+/*configurações da parte de destaque da página*/
+.destaque{
+	margin-top: 12px;
+}
+.menu-categorias{
+	text-transform: uppercase;
+	width: 230px;
+	float: left;
+}
+.menu-categorias ul{
+	margin-left: -7px;
+}
+.menu-categorias ul li{
+	margin: 10px;
+	border-bottom: 1px solid #4876FF;
+	padding: 3px 10px;
+}
+.menu-categorias ul li:nth-child(n+13){
+    display: none;
+}
+.menu-categorias ul li a{
+	text-decoration: none;
+	font-weight: bold;
+	color: #00868B;
+	margin-left: -5px;
+}
+.menu-categorias ul li:last-child{
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    border-bottom: 10px solid #4876FF;
+}
+.menu-categorias ul li:last-child > a{
+    color: #00008B;
+    font-size: 18px;
+}
+.menu-categorias h2{
+	font-size: 20px;
+	/*border: 1px solid black;*/
+	background-color: #4876FF;
+	padding: 10px;
+	color: #87CEFF;
+	font-weight: bold;
+}
+.destaque > img{
+	width: 700px;
+	height: 480px;
+	float: right;
+}
+/*costumização dos painéis de 'minhas séries' e 'séries mais assistidas'*/
+.paineis{
+	clear: both;
+}
+.painel{
+	width: 430px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+	box-shadow: 1px 1px 4px #999;
+}
+.painel li{
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+}
+.painel img{
+	width: 130px;
+	height: 200px;
+}
+.painel h2{
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 24px;
+	color: #20B2AA;
+}
+.painel ol li a{
+	text-decoration: none;
+	text-align: center;
+	color: #6C7B7B;
+	font-size: 15px;
+}
+.minhas-series{
+	margin-top: 10px;
+	background-color: #C1CDCD;
+	padding: 10px;
+	padding-left: 25px;
+	float: left;
+}
+.mais-vistos{
+	background-color: #CDC5BF;
+	padding: 10px;
+	padding-left: 25px;
+	float: right;
+	margin-top: 10px;
+}
+/*customização do rodapé*/
+footer{
+	background-color: black;
+	clear: both;
+}
+footer p{
+	padding: 15px;
+	color: white;
+}
+/*Customização de efeitos hover(pseudo-classes) em links*/
+.menu-principal ul li a:hover, .menu-principal ul li a:active{
+	color: #20B2AA;
+}
+.cadastro a:hover, .cadastro a:active{
+	color: #00CED1;
+}
+#btnBuscar:hover, #btnBuscar:active{
+	background-color: #008B8B;
+}
+.menu-categorias ul li a:hover{
+	/*color: #27408B;*/
+	color: #00CED1;
+}
+/*Efeitos do CSS3, por exemplo, transições e rotações*/
+.painel li:hover{
+	background-color: rgba(255,255,255,0.8);
+	transform: scale(1.1);
+	transition: 0.3s;
+}
+/*Mensagens de sucesso e de falha*/
+.alerta{
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 15px;
+        margin-top: 10px;
+}
+.mensagem-falha{
+	color: #8B0000;
+	background-color: #FF6347;
+	border-color: #ebccd1;
+}
+.mensagem-sucesso{
+	color: #006400;
+	background-color: #00FF7F;
+	border-color: #d6e9c6;
+}
+strong{
+    font-weight: bold;
+}
+/*customização do navbar (cabeçalho da página) */
+header{
+	background-color: #B0E0E6;
+}
+.navbar-principal ul{
+	list-style-type: none;
+	margin: -5px 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #B0E0E6;
+}
+.navbar-principal li{
+	float: left;
+}
+.navbar-principal li a, .dropBtn{
+	display: inline-block;
+	text-decoration: none;
+	color: #104E8B;
+	text-align: center;
+	padding: 14px 16px;
+}
+.navbar-principal li a:hover, .dropdown:hover{
+	background-color: #27408B;
+	color: white;
+}
+.navbar-principal li.dropdown{
+	display: inline-block;
+}
+.dropdown-content{
+	display: none;
+	position: absolute;
+	background-color: #ADD8E6;
+	min-width: 100px;
+}
+.dropdown-content a{
+	color: black;
+	text-decoration: none;
+	padding: 12px 16px;
+	display: block;
+	text-align: left;
+}
+.dropdown:hover .dropdown-content{
+	display: block;
+}
+.usuarioLogado{
+    text-decoration: none;
+    cursor: default;
+}

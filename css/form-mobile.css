@@ -1,0 +1,17 @@
+@media (max-width: 710px){
+	.form h1{
+		font-size: 1.8em;
+	}
+	.form-box{
+		margin-left: 0.7em;
+	}
+	.field-large{
+		width: 90%;
+	}
+	.field-tinySmall{
+		width: 30%;
+	}
+	footer p{
+		font-size: 0.8em;
+	}
+}

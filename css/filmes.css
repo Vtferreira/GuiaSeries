@@ -1,0 +1,215 @@
+/*design pensando em mobile-first*/
+.container{
+	width: 970px;
+}
+em{
+	font-weight: bold;
+	font-style: italic;
+}
+.lista-filmes{
+	margin-top: 0.5em;
+	width: 95%;
+	max-width: 1200px;
+}
+.lista-filmes h1{
+	text-align: center;
+	margin-bottom: 0.3em;
+	font-size: 1.9em;
+}
+.filme, .filmeInformacoes{
+	margin-bottom: 0.7em;
+	border-bottom: 0.1em solid gray;
+	padding-bottom: 0.4em;
+	display: inline-block;
+}
+.filme:last-child{
+	border-bottom: none;
+}
+.filme figure, .filmeInformacoes figure{
+	margin-bottom: 0.8em;
+	text-align: center;
+}
+.filme figure img, .filme-consulta figure img{
+	width: 12.5em;
+	height: 18em;
+}
+.filme p, .filmeInformacoes p{
+	line-height: 1.3em;
+	text-align: left;
+}
+.filmeInformacoes a, .filme a{
+	color: blue;
+	text-decoration: none;
+}
+.filmeInformacoes a:hover, .filme a:hover{
+	text-decoration: underline;
+}
+.titulo-filme a, .titulo-filme{
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.2em;
+	color: #2F4F4F;
+    text-decoration: none;
+}
+.form-box{
+    margin-left: 1.2em;
+}
+.field-small{
+    width: 13em;
+}
+.filme-consulta{
+	width: 95%;
+    margin-top: 0.5em;
+    margin-left: 0.9em;
+}
+.filme-consulta figure{
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+.filme-consulta figure img{
+	border: 0.3em solid #00688B;
+}
+.filme-consulta h1{
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+.avaliacaoIMBD{
+	border: 0.2em solid #8B5A00;
+	border-radius: 0.4em;
+	padding: 0.2em;
+	background: linear-gradient(to right, #8B4500, #EE7600);
+	color: white;
+	display: inline-block;
+	margin-right: 0.9em;
+	width: 25%;
+	float: right;
+	text-align: center;
+}
+.sinopse h2{
+	font-size: 1.1em;
+	font-weight: bold;
+	color: black;
+	margin-top: -0.3em;
+	margin-bottom: 0.2em;
+}
+.media-notas{
+	margin-top: 0.4em;
+	font-size: 1em;
+}
+.mediaNotas{
+	font-size: 1.25em;
+        font-weight: bold;
+}
+.status-filtro, .estatistica{
+	width: 40%;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+    border-radius: 0.4em;
+    padding: 0.5em;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 0.7em;
+}
+.total-tempo{
+	font-size: 0.8em;
+	font-weight: bold;
+}
+.status-filtro{
+    border: 0.1em solid #53868B;
+    background-color: #BFEFFF;
+    color: #104E8B;
+}
+.status-filtro > a{
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #27408B;
+    text-decoration: none;
+}
+.estatistica{
+    border: 0.1em solid #FF4500;
+    background-color: #F4A460;
+    color: #B22222;
+}
+.estatistica-tempo{
+    padding-top: 0.7em;
+    padding-bottom: 0.55em;
+}
+@media (min-width: 600px){
+	.lista-filmes{
+		width: 100%;
+	}
+	.filme{
+		width: 45.5%;
+		/*display: inline-block;*/
+		margin-left: 1em;
+		vertical-align: top;
+		text-align: left;
+	}
+	.filme:nth-last-of-type(2){
+		border-bottom: none;
+	}
+	.lista-filmes h1{
+		font-size: 2.3em;
+	}
+	.filme figure{
+		text-align: center;
+	}
+    .form-box{
+        margin-left: 2.8em;
+    }
+    .sinopse{
+    	margin-right: 0;
+    	margin-bottom: 0.5em;
+    }
+    .filmeInformacoes{
+    	width: 97%;
+    	margin-top: 0.5em;
+    }
+    .filmeInformacoes figure{
+    	float: left;
+    	margin-right: 0.5em;
+    }
+    .avaliacaoIMBD{
+    	display: inline;
+    	width: 15%;
+    	float: right;
+    }
+    .status-filtro, .estatistica{
+    	width: 17%;
+    	font-size: 0.9em;
+    }
+    .estatistica{
+		width: 23%;
+	}
+	.total-tempo{
+		font-size: 0.8em;
+	}
+}
+@media (min-width: 1000px){
+	.lista-filmes{
+		width: 72%;
+	}
+	.filme{
+		width: 30%;
+	}
+	.lista-filmes h1{
+		font-size: 2.5em;
+	}
+	.filme-consulta{
+		width: 71%;
+		margin: 0 auto;
+		margin-top: 0.5em;
+	}
+    .status-filtro, .estatistica{
+    	width: 16%;
+    	font-size: 0.95em;
+    }
+    .estatistica{
+    	width: 20%;
+    }
+    .total-tempo{
+    	font-size: 0.9em;
+    }
+}

@@ -1,0 +1,119 @@
+/*configuração comum a todos os fields*/
+.field{
+	padding: 5px 12px;
+	margin-top: 2px;
+	border: 1px solid #A2B5CD;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #363636;
+}
+.field-success{
+    border: 3px solid #009900;
+}
+.field-error{
+	border: 2px solid #CD0000;
+}
+.field-warning{
+    border: 2px solid #FF4500;
+}
+.field-success-message{
+    color: green;
+    font-size: 14px;
+    clear: both;
+}
+.field-error-message{
+	color: red;
+	font-size: 14px;
+	clear: both;
+}
+.field-warning-message{
+    	color: #EE4000;
+	font-size: 14px;
+	clear: both;
+}
+.field:focus{
+	border: 1px solid #5F9EA0;
+}
+/*tamanhos dos campos*/
+.field-large{
+	width: 80%;
+}
+.field xx-large{
+    width: 150%;
+}
+.field-moderate{
+	width: 50%;
+}
+.field-small{
+	width: 30%;
+}
+.field-tinySmall{
+	width: 15%;
+}
+/*configuração de box-model dos formulários*/
+.form-box{
+	margin-top: 10px;
+	margin-left: 80px;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 16px;
+}
+.form-box label{
+	font-weight: bold;
+}
+.form-side{
+	float: left;
+	width: 45.5%;
+}
+.clear-form-side{
+	clear: both;
+}
+.form-box:last-child{
+	margin-bottom: 10px;
+}
+.form > h1{
+	text-align: center;
+	margin-top: 15px;
+}
+/*configuração de botões*/
+.button{
+	cursor: pointer;
+	padding: 8px 15px;
+	font-size: 14px;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	margin-right: 5px;
+}
+.button-info{
+	background-color: #1874CD;
+}
+.button-info:hover{
+	background-color: #3A5FCD;
+}
+.button-error{
+	background-color: #CD3333;
+}
+.button-error:hover{
+	background-color: #EE3B3B;
+}
+.button-warning{
+	background-color: #EE9A00;
+}
+.button-warning:hover{
+	background-color: #FFA500;
+}
+.button-alter{
+	background-color: #43CD80;
+}
+.novoEstudio{
+    display: none;
+}
+.poster{
+    width: 200px;
+    height: 300px;
+    border: 1px solid #1E90FF;
+    padding: 5px;
+}
+.escondeCampo{
+    display: none;
+}
