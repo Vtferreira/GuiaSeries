@@ -25,7 +25,7 @@
                         <a href="#" class="dropBtn">Minha Lista</a>
                         <div class="dropdown-content">
                             <a href="lista-filmes.php?listaPorUsuario=1&status=assistido">Filmes</a><br>    
-                            <a href="lista-series-usuario.php">Séries</a><br>
+                            <a href="lista-series.php?listaPorUsuario=1&status=10">Séries</a><br>
                             <a href="estatistica-filmes.php">Estatísticas</a>
                         </div>
                     </li>

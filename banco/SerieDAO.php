@@ -217,4 +217,40 @@ class SerieDAO implements Armazenavel {
         $resultado = mysqli_query($this->conexao,$query);
         return $resultado;
     }
+    public function listaUsuarioSerie($usuario_id,$status){
+        $query = "SELECT p.usuario_id, u.nome AS usuario_nome, p.serie_id, g.id AS genero_id, 
+        g.nome AS genero_nome, s.* 
+        FROM usuarioserie p INNER JOIN usuarios u ON p.usuario_id = u.id 
+        INNER JOIN series s ON p.serie_id = s.id
+        INNER JOIN generos g ON s.genero_id = g.id
+        WHERE p.usuario_id = {$usuario_id} AND p.status = {$status}";
+        /*Filtragem de campos para a pesquisa*/
+        $ordenacao = "s.avaliacao DESC";
+        if(isset($_POST['criterio'])){
+            $ordenacao = filter_input(INPUT_POST, 'criterio');
+        }
+        $query = $query." ORDER BY {$ordenacao}";
+        $resultado = mysqli_query($this->conexao,$query);
+        $lista_series = array();
+        while($linha = mysqli_fetch_assoc($resultado)){
+            $serieObj = new Serie($linha['nome'], $linha['anoEstreia'], $linha['totalTemporadas'], 
+                    $linha['classificacao']);
+            $serieObj->setId($linha['serie_id']);
+            $serieObj->getGenero()->setId($linha['genero_id']);
+            $serieObj->getGenero()->setNome($linha['genero_nome']);
+            $serieObj->setArquivo($linha['arquivo']);
+            $serieObj->setDuracao($linha['duracao']);
+            $serieObj->setAvaliacaoIMDB($linha['avaliacao']);
+            $serieObj->setSinopse($linha['sinopse']);
+            array_push($lista_series, $serieObj);
+        }
+        return $lista_series;
+    }
+    public function contaUsuarioSerie($usuario_id,$status){
+        $query = "SELECT COUNT(*) AS total_serie FROM usuarioserie WHERE usuario_id = {$usuario_id} "
+        . "AND status = {$status}";
+        $resultado = mysqli_query($this->conexao, $query);
+        $linha = mysqli_fetch_assoc($resultado);
+        return $linha;
+    }
 }
