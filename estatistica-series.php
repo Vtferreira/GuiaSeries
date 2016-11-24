@@ -10,6 +10,11 @@
 	$usuario_id = $_SESSION['idUsuario'];
 	$serieDAO = new SerieDAO($conexao);
 	$generos = $serieDAO->geraEstatisticaPorGenero($usuario_id);
+	$episodios_genero = $serieDAO->consultaEpisodiosPorGenero($usuario_id);
+	$i = 0;
+	for($i = 0; $i < count($episodios_genero);$i++){
+		$generos[$i]['total_episodios'] = $episodios_genero[$i]['total_episodios'];
+	}
 	/*Arrays referentes à outras estatísticas*/
 	$maiorNota = $serieDAO->geraEstatistica($usuario_id,"s.avaliacao DESC");
 	$menorNota = $serieDAO->geraEstatistica($usuario_id,"s.avaliacao ASC");
@@ -31,9 +36,12 @@
 	<?php require_once("include/cabecalho-bootstrap.php"); ?>
 	<!-- INÍCIO GOOGLE CHARTS !-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<?php require_once("js/graficos/quantidade-coluna.php"); ?>
 	<?php require_once("js/graficos/temporada-coluna.php"); ?>
-	<?php require_once("js/graficos/temporada-pizza.php"); ?>
+	<?php require_once("js/graficos/episodio-coluna.php"); ?>
 	<?php require_once("js/graficos/serie-quantidade-pizza.php"); ?>
+	<?php require_once("js/graficos/temporada-pizza.php"); ?>
+	<?php require_once("js/graficos/episodio-pizza.php"); ?>
 	<!-- FIM GOOGLE CHARTS !-->
 </head>
 <body>
@@ -43,32 +51,47 @@
 			<div class="panel-heading">Séries por Gênero</div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-10">
 						<table class="table table-striped table-bordered">
 							<tr>
 								<th>Gênero</th>
 								<th>Quantidade</th>
 								<th>Temporadas</th>
+								<th>Episódios</th>
 							</tr>
 							<?php foreach($generos as $genero): ?>
 							<tr>
 								<td><?=$genero['genero_nome']?></td>
 								<td><?=$genero['total_genero']?></td>
 								<td><?=$genero['temporada_genero']?></td>
+								<td><?=$genero['total_episodios']?></td>
 							</tr>
 							<?php endforeach; ?>
 						</table> 
 					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-4">
-						<div id="grafico-barra-temporada"></div>
+						<div id="grafico-barra-quantidade"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="grafico-pizza-quantidade"></div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-4">
-						<div id="grafico-pizza-temporada"></div>
+						<div id="grafico-barra-temporada"></div>
 					</div>
 					<div class="col-md-4">
-						<div id="grafico-pizza-quantidade"></div>
+						<div id="grafico-pizza-temporada"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div id="grafico-barra-episodio"></div>
+					</div>
+					<div class="col-md-4">
+						<div id="grafico-pizza-episodio"></div>
 					</div>
 				</div>
 			</div>

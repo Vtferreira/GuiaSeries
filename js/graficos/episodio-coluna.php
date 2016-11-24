@@ -9,25 +9,25 @@
   google.charts.setOnLoadCallback(drawBasic);
   function drawBasic() {
         var data = google.visualization.arrayToDataTable([
-          ['Gênero', 'Temporadas'],
+          ['Gênero', 'Quantidade'],
           <?php foreach($generos as $genero): ?>
-          ['<?=$genero['genero_nome']?>', <?=$genero['temporada_genero']?>],
+          ['<?=$genero['genero_nome']?>', <?=$genero['total_episodios']?>],
           <?php endforeach; ?>
         ]);
         var options = {
-          title: 'Temporadas por Gênero',
+          title: 'Episódios por Gênero',
           chartArea: {width: '55%'},
           width: 550,
           height: 450,
           hAxis: {
-            title: 'Número de Temporadas',
+            title: 'Número de Episódios',
             minValue: 0,
           },
           vAxis: {
             title: 'Gênero'
           }
         };
-        var chart = new google.visualization.BarChart(document.getElementById('grafico-barra-temporada'));
+        var chart = new google.visualization.BarChart(document.getElementById('grafico-barra-episodio'));
         chart.draw(data, options);
     }
 </script>

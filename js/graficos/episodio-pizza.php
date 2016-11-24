@@ -1,5 +1,5 @@
 <style type="text/css">
-    #grafico-pizza-temporada{
+    #grafico-pizza-episodio{
         margin-left: 12em;
     }
 </style>
@@ -10,15 +10,15 @@
     var data = google.visualization.arrayToDataTable([
 		['Gênero', 'Temporadas'],
 		<?php foreach($generos as $genero): ?>
-      	['<?=$genero['genero_nome']?>', <?=$genero['temporada_genero']?>],
+      	['<?=$genero['genero_nome']?>', <?=$genero['total_episodios']?>],
       	<?php endforeach; ?>
     ]);
     var options = {
-      title: 'Temporadas por Gênero',
+      title: 'Episódios por Gênero',
       width: 550,
       height: 450
     };
-    var chart = new google.visualization.PieChart(document.getElementById('grafico-pizza-temporada'));
+    var chart = new google.visualization.PieChart(document.getElementById('grafico-pizza-episodio'));
     chart.draw(data, options);
 	}
 </script>

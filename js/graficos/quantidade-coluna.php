@@ -9,13 +9,13 @@
   google.charts.setOnLoadCallback(drawBasic);
   function drawBasic() {
         var data = google.visualization.arrayToDataTable([
-          ['Gênero', 'Temporadas'],
+          ['Gênero', 'Quantidade'],
           <?php foreach($generos as $genero): ?>
-          ['<?=$genero['genero_nome']?>', <?=$genero['temporada_genero']?>],
+          ['<?=$genero['genero_nome']?>', <?=$genero['total_genero']?>],
           <?php endforeach; ?>
         ]);
         var options = {
-          title: 'Temporadas por Gênero',
+          title: 'Séries por Gênero',
           chartArea: {width: '55%'},
           width: 550,
           height: 450,
@@ -27,7 +27,7 @@
             title: 'Gênero'
           }
         };
-        var chart = new google.visualization.BarChart(document.getElementById('grafico-barra-temporada'));
+        var chart = new google.visualization.BarChart(document.getElementById('grafico-barra-quantidade'));
         chart.draw(data, options);
     }
 </script>

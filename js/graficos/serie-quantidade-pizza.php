@@ -1,6 +1,6 @@
 <style type="text/css">
     #grafico-pizza-quantidade{
-        margin-left: 7em;
+        margin-left: 12em;
     } 
 </style>
 <script type="text/javascript">
@@ -15,7 +15,7 @@
     ]);
     var options = {
       title: 'Séries por Gênero',
-      width: 600,
+      width: 550,
       height: 450
     };
     var chart = new google.visualization.PieChart(document.getElementById('grafico-pizza-quantidade'));
