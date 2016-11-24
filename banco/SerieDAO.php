@@ -253,4 +253,40 @@ class SerieDAO implements Armazenavel {
         $linha = mysqli_fetch_assoc($resultado);
         return $linha;
     }
+    public function geraEstatisticaPorGenero($usuario_id){
+        $query = "SELECT g.nome AS genero_nome, COUNT(*) as total_genero, SUM(s.totalTemporadas) AS temporada_genero 
+        FROM usuarioserie p INNER JOIN series s ON p.serie_id = s.id
+        INNER JOIN generos g ON s.genero_id = g.id
+        WHERE p.usuario_id = {$usuario_id} AND p.status = 10 GROUP BY g.nome";
+        $resultado = mysqli_query($this->conexao,$query);
+        $i = 0;
+        $generos = array();
+        while($linha = mysqli_fetch_assoc($resultado)){
+            $generos[$i]['genero_nome'] = $linha['genero_nome'];
+            $generos[$i]['total_genero'] = $linha['total_genero'];
+            $generos[$i]['temporada_genero'] = $linha['temporada_genero'];
+            $i++;
+        }
+        return $generos;
+    }
+    public function geraEstatistica($usuario_id,$ordenacao){
+        $query = "SELECT p.usuario_id, u.nome AS usuario_nome, s.id AS serie_id, s.nome AS serie_nome, 
+        s.avaliacao, s.anoEstreia, s.totalTemporadas FROM `usuarioserie` p 
+        INNER JOIN usuarios u ON p.usuario_id = u.id
+        INNER JOIN series s ON p.serie_id = s.id
+        WHERE usuario_id = {$usuario_id} AND status = 10
+        ORDER BY {$ordenacao} LIMIT 1";
+        // echo $query;
+        $resultado = mysqli_query($this->conexao,$query);
+        $serie = array();
+        $serieObj = new Serie();
+        $linha = mysqli_fetch_assoc($resultado);
+        $serieObj->setId($linha['serie_id']);
+        $serieObj->setNome($linha['serie_nome']);
+        $serieObj->setAvaliacaoIMDB($linha['avaliacao']);
+        $serieObj->setAnoEstreia($linha['anoEstreia']);
+        $serieObj->setTemporadas($linha['totalTemporadas']);
+        array_push($serie, $serieObj);
+        return $serie;
+    }
 }

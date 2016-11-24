@@ -24,7 +24,8 @@
 	          <ul class="dropdown-menu">
 	            <li><a href="lista-filmes.php?listaPorUsuario=1&status=assistido">Filmes</a></li>
 	            <li><a href="lista-series.php?listaPorUsuario=1&status=10">Séries</a></li>
-	            <li><a href="estatistica-filmes.php">Estatísticas</a></li>
+              <li><a href="estatistica-filmes.php">Estatísticas Filmes</a></li>
+	            <li><a href="estatistica-series.php">Estatísticas Séries</a></li>
 	          </ul>
         </li>
        	<li class="dropdown">

@@ -26,7 +26,8 @@
                         <div class="dropdown-content">
                             <a href="lista-filmes.php?listaPorUsuario=1&status=assistido">Filmes</a><br>    
                             <a href="lista-series.php?listaPorUsuario=1&status=10">Séries</a><br>
-                            <a href="estatistica-filmes.php">Estatísticas</a>
+                            <a href="estatistica-filmes.php">Estatísticas Filmes</a><br>
+                            <a href="estatistica-series.php">Estatísticas Séries</a>
                         </div>
                     </li>
                     <?php endif; ?>
