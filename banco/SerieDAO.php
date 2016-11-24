@@ -289,4 +289,13 @@ class SerieDAO implements Armazenavel {
         array_push($serie, $serieObj);
         return $serie;
     }
+    public function consultaTotalEpisodios($serie_id){
+        $query = "SELECT COUNT(e.nome) AS total_episodios, COUNT(DISTINCT t.id) AS total_temporadas
+        FROM series s INNER JOIN temporadas t ON t.serie_id = s.id
+        INNER JOIN episodios e ON e.temporada_id = t.id
+        WHERE t.serie_id = {$serie_id}";
+        $resultado = mysqli_query($this->conexao,$query);
+        $linha = mysqli_fetch_assoc($resultado);
+        return $linha;
+    }
 }

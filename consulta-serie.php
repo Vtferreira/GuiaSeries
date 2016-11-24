@@ -21,6 +21,7 @@ $usuario_id = $_SESSION["idUsuario"];
 $serieDAO = new SerieDAO($conexao);
 $serie = $serieDAO->consultar($serie_id);
 $temporadas = $serieDAO->listaTemporadas($serie_id);
+$totalEpisodios = $serieDAO->consultaTotalEpisodios($serie_id);
 /*Configuração dos botões*/
 $textoBtnAcompanho = "Já Acompanho";
 $textoBtnVouAcompanhar = "Quero Acompanhar";
@@ -58,6 +59,10 @@ if($flagAcompanho != NULL){
     }
     .tabela tr > th:nth-child(4){
         width: 5%;
+    }
+    .avaliacaoIMBD{
+        border: none;
+        background: #1874CD;
     }
 </style>
 <script src="https://use.fontawesome.com/b17cc3a995.js"></script>
@@ -104,7 +109,11 @@ if($flagAcompanho != NULL){
 
             <br>
             <strong>Classificação: </strong><?= $serie->mostraClassificacao() ?><br>
-            <span class="avaliacaoIMBD">Avaliação:<br><?php echo $serie->getAvaliacaoIMDB(); ?></span>
+            <!-- <span class="avaliacaoIMBD">Avaliação:<br><?php echo $serie->getAvaliacaoIMDB(); ?></span> -->
+            <span class="avaliacaoIMBD">
+                <strong><?=$totalEpisodios['total_episodios']?></strong> episódios<br>
+                <strong><?=$totalEpisodios['total_temporadas']?></strong> temporadas
+            </span> 
             <strong>Duração dos Episódios:</strong>
             <span class="duracao-filme">
                 <?= $serie->getDuracao() ?> minutos
@@ -116,7 +125,7 @@ if($flagAcompanho != NULL){
         </p>
     </section>
     <section class="episodios">
-        <div class="form-box" style="margin-left: 0">
+        <div class="form-box" style="margin-left: 0;">
             <label for="temporada">Temporadas</label>
             <select name="temporada" id="temporada" class="field" style="width:25%">
                 <?php
@@ -127,6 +136,7 @@ if($flagAcompanho != NULL){
                     <option value="<?= $temporada['temporada_id'] ?>"><?= $nomeTemporada ?></option>
                 <?php endforeach; ?>
             </select>
+        </div>
             <table class="tabela" id="tabela-episodios">
                 <thead>
                     <tr>
@@ -140,6 +150,6 @@ if($flagAcompanho != NULL){
                 <tbody>
                 </tbody>
             </table>
-        </div>
+        <!-- </div> -->
     </section>
 </div>

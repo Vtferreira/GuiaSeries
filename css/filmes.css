@@ -136,6 +136,18 @@ em{
     padding-top: 0.7em;
     padding-bottom: 0.55em;
 }
+.informacao-episodios{
+	border: none;
+	color: white;
+	background-color: #1874CD;
+	border-radius: 4px;
+	width: 15%;
+	text-align: center;
+	float: right;
+	padding: 0.5em 0.7em;
+	margin: 0.3em;
+	margin-right: 1.9em;
+}
 @media (min-width: 600px){
 	.lista-filmes{
 		width: 100%;
