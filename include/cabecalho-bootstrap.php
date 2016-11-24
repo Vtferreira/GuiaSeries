@@ -23,7 +23,7 @@
        		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Minha Lista<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="lista-filmes.php?listaPorUsuario=1&status=assistido">Filmes</a></li>
-	            <li><a href="lista-series-usuario.php">Séries</a></li>
+	            <li><a href="lista-series.php?listaPorUsuario=1&status=10">Séries</a></li>
 	            <li><a href="estatistica-filmes.php">Estatísticas</a></li>
 	          </ul>
         </li>
