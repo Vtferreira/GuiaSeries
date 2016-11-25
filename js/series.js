@@ -71,7 +71,7 @@ $(document).ready(function(){
 	$("button[type=submit]").on("click",function(event){
 		var botao = $("button[type=submit]").text();
 		botao = botao.toLowerCase();
-		if(botao != "pesquisar"){
+		if(botao != "pesquisar" || botao != "concluir"){
 			event.preventDefault();
 			var serie = $("#filme").val();
 			var genero = $("#genero").val();

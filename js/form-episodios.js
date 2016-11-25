@@ -1,4 +1,4 @@
-function criaDatePicker(){
+function criaDatePicker(seletor){
 	$.datepicker.setDefaults($.datepicker.regional['pt-BR']);
 	$("#lancamento").datepicker({
 		dateFormat: "dd/mm/yy"

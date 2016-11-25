@@ -1,4 +1,10 @@
-/*==Funções de validação==*/
+/*Arquivo responsável por funções de validação*/
+function criaDatePicker(seletor){
+	$.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+	$("#"+seletor).datepicker({
+		dateFormat: "dd/mm/yy"
+	});
+}
 function verificaEnvio(array){
 	var tamanho = array.length;
 	var valido = 0;
@@ -22,6 +28,31 @@ function validaCampo(tipo,campo){
 	if(campo == "selecione" || campo == ""){
 		$("#"+tipo).css("border","0.3em solid red");
 		$("#"+tipo).parent().append($("<span></span>").css("color","rgb(255, 0, 0)").text("Campo Obrigatório"));
+		valido = false;
+	}
+	return valido;
+}
+function validaArquivo(arquivo){
+	var valido = true;
+	if(arquivo == ""){
+		alert("Selecione uma imagem de divulgação");
+		valido = false;
+	}
+	return valido;
+}
+function quebraData(data,caracter){
+	var novaData = data.split(""+caracter+"");
+	return novaData;
+}
+function comparaDataAgenda(dataForm){
+	var dataAtual = new Date();
+	var dataComp = new Date();
+	var mes = 0;
+	var valido = true;
+	dataForm = quebraData(dataForm,"/");
+	mes = dataForm[1] - 1;
+	dataComp.setFullYear(dataForm[2],mes,dataForm[0]);
+	if(dataAtual > dataComp){
 		valido = false;
 	}
 	return valido;

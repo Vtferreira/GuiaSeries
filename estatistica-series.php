@@ -22,18 +22,14 @@
 	$maisAntiga = $serieDAO->geraEstatistica($usuario_id,"s.anoEstreia ASC");
 	$maisTemporadas = $serieDAO->geraEstatistica($usuario_id,"s.totalTemporadas DESC");
 	$menosTemporadas = $serieDAO->geraEstatistica($usuario_id,"s.totalTemporadas ASC");
+	$tituloAba = "GuiaSeries | Estatisticas";
+	require_once("include/head-bootstrap.php");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>GuiaSerie | Estatísticas</title>
 	<style type="text/css">
 		.table tr > td:first-child{
 			width: 55%;
 		}
 	</style>
-	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
-	<?php require_once("include/cabecalho-bootstrap.php"); ?>
 	<!-- INÍCIO GOOGLE CHARTS !-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<?php require_once("js/graficos/quantidade-coluna.php"); ?>
@@ -43,8 +39,7 @@
 	<?php require_once("js/graficos/temporada-pizza.php"); ?>
 	<?php require_once("js/graficos/episodio-pizza.php"); ?>
 	<!-- FIM GOOGLE CHARTS !-->
-</head>
-<body>
+<?php require_once("include/body-bootstrap.php"); ?>
 	<div class="container">
 		<h1>Estatísticas - Séries Assistidas</h1>
 		<div class="panel panel-primary">
@@ -146,5 +141,4 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+<?php require_once("include/rodape-bootstrap.php"); ?>

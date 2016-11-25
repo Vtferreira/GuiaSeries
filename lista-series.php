@@ -21,6 +21,8 @@ function contaListaUsuario($serieDAO,$status){
     $total = $serieDAO->contaUsuarioSerie($usuario_id,$status);
     return $total;
 }
+$usuarioObj = new Usuario();
+$usuarioObj->protegePagina();
 $usuarioId = $_SESSION['idUsuario'];
 $serieDAO = new SerieDAO($conexao);
 $lista_series = criaListaUsuario($serieDAO);

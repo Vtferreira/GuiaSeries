@@ -23,13 +23,10 @@ $filmeObj = new Filme();
 $filmeObj->setDataEstreia($filmeMaisRecente["dataEstreia"]);
 $filmeObj2 = new Filme();
 $filmeObj2->setDataEstreia($filmeMaisAntigo["dataEstreia"]);
+/**/
+$tituloAba = "GuiaSeries | Estatísticas";
+require_once("include/head-bootstrap.php");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>GuiaSeries | Estatísticas</title>
-    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
-    <?php require_once("include/cabecalho-bootstrap.php");?>
     <!-- INÍCIO GOOGLE CHARTS !-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <?php require_once("js/graficos/total-genero-coluna.php"); ?>
@@ -44,8 +41,7 @@ $filmeObj2->setDataEstreia($filmeMaisAntigo["dataEstreia"]);
             width: 5%;
         }
     </style>
-</head>
-<body>
+<?php require_once("include/body-bootstrap.php"); ?>
     <div class="container">
         <h1>Estatísticas - Filmes Assistidos</h1>
         <div class="panel panel-primary">
@@ -117,5 +113,4 @@ $filmeObj2->setDataEstreia($filmeMaisAntigo["dataEstreia"]);
                     </div>
                 </div>
     </div>
-</body>
-</html>
+<?php require_once("include/rodape-bootstrap.php"); ?>

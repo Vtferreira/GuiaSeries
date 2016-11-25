@@ -16,13 +16,14 @@ $usuarioObj->protegePagina();
 $dataAtual = date("d/m/Y");
 $serieDAO = new SerieDAO($conexao);
 $lista_series = $serieDAO->listar();
+/**/
+$tituloAba = "GuiaSeries | Episódio";
+require_once("include/head-bootstrap.php");
 ?>
-<title><?php echo $tituloAba; ?></title>
-<?php require_once("include/arquivosJS.php"); ?>
-<?php require_once("include/cabecalho-bootstrap.php"); ?>
 <script type="text/javascript" src="js/datePickerBR.js"></script>
 <script type="text/javascript" src="js/validacao.js"></script>
 <script type="text/javascript" src="js/form-episodios.js"></script>
+<?php require_once("include/body-bootstrap.php"); ?>
 <div class="container">
 	<?php 
 	if(isset($_GET['adicionou']) && ($_GET['adicionou'] == '1000')){
@@ -77,7 +78,8 @@ $lista_series = $serieDAO->listar();
 				</div>
 			</div>
 		</div>
-		<button type="submit" name="salvar" class="btn btn-primary">Pesquisar</button>
+		<button type="submit" name="salvar" class="btn btn-primary">Concluir</button>
 		<button type="reset" class="btn btn-warning">Limpar</button>
 	</form>
 </div>
+<?php require_once("include/rodape-bootstrap.php"); ?>

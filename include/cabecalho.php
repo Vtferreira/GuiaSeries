@@ -22,6 +22,13 @@
                     <li><a href="index.php">Home</a></li>
                     <?php if(isset($_SESSION['idUsuario'])): ?>
                     <li class="dropdown">
+                        <a href="#" class="dropBtn">Agenda</a>
+                        <div class="dropdown-content">
+                            <a href="agenda.php">Geral</a><br>
+                            <a href="agenda.php">Minha Agenda</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
                         <a href="#" class="dropBtn">Minha Lista</a>
                         <div class="dropdown-content">
                             <a href="lista-filmes.php?listaPorUsuario=1&status=assistido">Filmes</a><br>    
@@ -34,6 +41,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropBtn">Adicionar Novo</a>
                         <div class="dropdown-content">
+                            <a href="form-agenda.php">Agenda(Geral)</a><br>
                             <a href="form-genero.php">Gênero</a><br>    
                             <a href="form-filme.php">Filme</a><br>
                             <a href="form-serie.php">Série</a><br>

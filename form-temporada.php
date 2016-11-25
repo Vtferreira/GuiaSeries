@@ -7,12 +7,13 @@ $usuarioObj = new Usuario();
 $usuarioObj->protegePagina();
 $serie_nome = filter_input(INPUT_POST, 'filme');
 $temporada = filter_input(INPUT_POST, 'temporada');
+/**/
+$tituloAba = "GuiaSeries | Temporada";
+require_once("include/head-bootstrap.php");
 ?>
-<title><?php echo $tituloAba; ?></title>
-<?php require_once("include/arquivosJS.php"); ?>
-<?php require_once("include/cabecalho-bootstrap.php"); ?>
 <script type="text/javascript" src="js/validacao.js"></script>
 <script type="text/javascript" src="js/form-temporada.js"></script>
+<?php require_once("include/body-bootstrap.php"); ?>
 <div class="container">
 	<div class="alert alert-success" style="display:none">
 		Temporada, com respectivos episódios, adicionada com sucesso!
@@ -34,7 +35,8 @@ $temporada = filter_input(INPUT_POST, 'temporada');
 				</div>
 			</div>
 		</div>
-		<button type="button" class="btn btn-primary" id="adicionar">Pesquisar</button>
+		<button type="button" class="btn btn-primary" id="adicionar">Concluir</button>
 		<button type="reset" class="btn btn-warning">Limpar</button>
 	</form>
 </div>
+<?php require_once("include/rodape-bootstrap.php"); ?>

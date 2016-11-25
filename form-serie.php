@@ -22,10 +22,12 @@ if(isset($_GET["opcao"]) && $_GET["opcao"] == "pesquisa"):
     $modoPesquisa = true;
     $metodo = "GET";
 endif;
+/**/
+$tituloAba = "GuiaSeries | Série";
+require_once("include/head-bootstrap.php");
+require_once("include/body-bootstrap.php");
 ?>
-<title><?php echo $tituloAba; ?></title>
-<?php require_once("include/arquivosJS.php"); ?>
-<?php require_once("include/cabecalho-bootstrap.php"); ?>
+<script type="text/javascript" src="js/series.js"></script>
 <div class="container">
 	<h1><?=$titulo_form?></h1>
 	<form id="form-serie" action="<?=$action?>" method="<?=$metodo?>" enctype="multipart/form-data">
@@ -108,3 +110,4 @@ endif;
         <button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
 	</form>
 </div>
+<?php require_once("include/rodape-bootstrap.php"); ?>

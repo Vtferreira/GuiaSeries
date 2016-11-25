@@ -258,3 +258,32 @@ header{
     text-decoration: none;
     cursor: default;
 }
+/*Configurações referentes à agenda*/
+.secao-agenda{
+	margin-top: 0.8em;
+	padding-bottom: 0.3em;
+	clear: both;
+	height: 225px;	
+	border-bottom: 0.1em solid gray;
+}
+.secao-agenda figure{
+	float: left;
+}
+.secao-agenda p{
+	padding: 0.5em;
+	margin-left: 9.5em;
+	/*float: right;*/
+}
+.titulo-agenda{
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #4A708B;
+	margin-left: 0.5em;
+}
+.contagem-estreia{
+	border-radius: 4px;
+	background-color: #FF7F00;
+	color: white;
+	font-size: 0.95em;
+	padding: 0.20em 0.5em;
+}

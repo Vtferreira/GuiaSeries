@@ -16,6 +16,8 @@ require_once("classes/Obra.php");
 require_once("classes/Genero.php");
 require_once("classes/Serie.php");
 require_once("banco/SerieDAO.php");
+$usuarioObj = new Usuario();
+$usuarioObj->protegePagina();
 $serie_id = filter_input(INPUT_GET, 'id');
 $usuario_id = $_SESSION["idUsuario"];
 $serieDAO = new SerieDAO($conexao);

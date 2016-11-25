@@ -7,6 +7,7 @@ class Serie extends Obra {
     private $anoEstreia;
     private $temporadas;
     private $temporadasObj;
+    private $diasRestantes;
     /*Magic Methods*/
     public function __construct($serie="",$ano="",$temporadas="",$classificacao=""){
         $this->setNome($serie);
@@ -40,5 +41,12 @@ class Serie extends Obra {
         $this->temporadasObj = $temporadasObj;
     }
 
+    public function getDiasRestantes(){
+        return $this->diasRestantes;
+    }
+
+    public function setDiasRestantes($dias){
+        $this->diasRestantes = $dias;
+    }
 
 }
