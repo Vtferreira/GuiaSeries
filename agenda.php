@@ -1,4 +1,5 @@
 <?php 
+	/*Lista os filmes e séries presentes na agenda geral do sistema*/
 	$tituloAba = "GuiaSeries | Agenda";
 	require_once("include/cabecalho.php");
 	require_once("classes/Obra.php");
