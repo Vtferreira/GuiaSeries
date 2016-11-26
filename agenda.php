@@ -47,6 +47,7 @@
 			<strong>Sinopse:</strong><br>
 			<?php echo $item->getSinopse(); ?>
 			<br>
+			<!-- Verificar lógica para botões depois !-->
 			<button type="button" class="button button-info" name="agenda" value=""
 				style="margin-top: 0.3em">
                 <i class="fa fa-thumbs-o-up fa-lg">&nbsp;Adicionar em Minha Agenda</i>
