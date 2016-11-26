@@ -25,8 +25,9 @@ $inputNaoEncontrei = "button";
 $buttonSubmit = "Enviar";
 $action = "php/adiciona-filme.php";
 $method = "POST";
-$imbd = "readonly";
+// $imbd = "readonly";
 $labelIMBD = "Avaliação IMBD";
+$modoPesquisa = false;
 if(isset($_GET["opcao"])&& $_GET["opcao"] == "pesquisa"){
     $opcForm = filter_input(INPUT_GET, 'opcao');
     $tituloForm = "Pesquisa de Filmes";
@@ -36,6 +37,7 @@ if(isset($_GET["opcao"])&& $_GET["opcao"] == "pesquisa"){
     $method = "GET";
     $imbd = "";
     $labelIMBD = "Avaliação(maior ou igual à)";
+    $modoPesquisa = true;
 }
 ?>
 <link rel="stylesheet" type="text/css" href="js/jqueryUI/css/custom-theme/jquery-ui-1.10.4.custom.min.css">
@@ -54,7 +56,7 @@ if(isset($_GET["opcao"])&& $_GET["opcao"] == "pesquisa"){
         <input type="hidden" name="imagem" id="imagem">
         <input type="hidden" name="premios" id="premios">
         <input type="hidden" id="existeDiretor">
-        <?php if(isset($_GET["opcao"]) && $_GET["opcao"] != "pesquisa"): ?>
+        <?php if(!$modoPesquisa): ?>
         <div class="form-box">
             <label for="arquivo">Imagem de divulgação</label><br>
             <input type="file" name="arquivo">
@@ -111,7 +113,7 @@ if(isset($_GET["opcao"])&& $_GET["opcao"] == "pesquisa"){
         </div>
         <div class="form-box">
             <label for="avaliacao"><?php echo $labelIMBD; ?></label><br>
-            <input type="text" id="avaliacao" name="avaliacao" class="field field-tinySmall" <?php echo $imbd;?>>
+            <input type="text" id="avaliacao" name="avaliacao" class="field field-tinySmall">
         </div>
         <div class="form-box">
             <label for="sinopse">Sinopse</label><br>

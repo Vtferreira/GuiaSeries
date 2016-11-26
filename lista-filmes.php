@@ -57,7 +57,13 @@ if(isset($_GET["listaPorUsuario"])){
     $arrayFilmes = $filmeDAO->listarOrderBy($criterio,$filmePesquisa);
     $titulo = "Listagem de Filmes";
 }
-/*Verifica se retornou apenas 0 ou 1 resultado*/
+if(count($arrayFilmes) == 0){
+    echo 
+    "<div class='alerta mensagem-sucesso container'>
+        Nenhum resultado encontrado. Refaça a pesquisa, se necessário
+    </div>";
+}
+/*Verifica se retornou apenas 0 ou 1 resultado
 if(count($arrayFilmes) == 1){
     header("Location: consulta-filme.php?id=".$arrayFilmes[0]->getId());
 }else if(count($arrayFilmes) == 0){
@@ -65,7 +71,7 @@ if(count($arrayFilmes) == 1){
     "<div class='alerta mensagem-sucesso container'>
         Nenhum resultado encontrado. Refaça a pesquisa, se necessário
     </div>";
-}
+}*/
 ?>
 <link rel="stylesheet" type="text/css" href="css/filmes.css">
 <script type="text/javascript">

@@ -38,7 +38,7 @@
     	            <li><a href="form-genero.php">Gênero</a></li>
     	            <li><a href="form-filme.php">Filme</a></li>
                   <li><a href="form-serie.php">Série</a></li>
-                  <li><a href="form-temporada.php">Temporada</a></li>
+                  <li><a href="form-temporada.php?criterio=s.nome">Temporada</a></li>
     	            <li><a href="form-episodio.php?criterio=s.nome">Episódio</a></li>
     	          </ul>
             </li>

@@ -45,7 +45,7 @@
                             <a href="form-genero.php">Gênero</a><br>    
                             <a href="form-filme.php">Filme</a><br>
                             <a href="form-serie.php">Série</a><br>
-                            <a href="form-temporada.php">Temporada</a><br>
+                            <a href="form-temporada.php?criterio=s.nome">Temporada</a><br>
                             <a href="form-episodio.php?criterio=s.nome">Episódio</a>
                         </div>
                     </li>

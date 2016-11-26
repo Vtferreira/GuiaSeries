@@ -69,7 +69,7 @@ class FilmeDAO implements Armazenavel{
                 . "VALUES ({$diretor_id},{$estudio_id},{$genero_id},'{$nome}','{$arquivo}','{$classificacao}'"
                 . ",{$duracao},'{$sinopse}',{$avaliacaoIMBD},'{$dataEstreia}','{$imagem}','{$premios}')";
         $resultado = mysqli_query($this->conexao,$query);
-        if(!resultado){
+        if(!$resultado){
             return mysqli_error($this->conexao);
         }
         return $resultado;

@@ -21,6 +21,7 @@ function contaListaUsuario($serieDAO,$status){
     $total = $serieDAO->contaUsuarioSerie($usuario_id,$status);
     return $total;
 }
+
 $usuarioObj = new Usuario();
 $usuarioObj->protegePagina();
 $usuarioId = $_SESSION['idUsuario'];
@@ -28,9 +29,11 @@ $serieDAO = new SerieDAO($conexao);
 $lista_series = criaListaUsuario($serieDAO);
 $totalAcompanho = contaListaUsuario($serieDAO,"10");
 $totalVouAcompanhar = contaListaUsuario($serieDAO,"20");
+/*
 if (count($lista_series) == 1) {
     header("Location: consulta-serie.php?id=" . $lista_series[0]->getId());
-} elseif (count($lista_series) == 0) {
+} */
+if (count($lista_series) == 0) {
     echo
     "<div class='alerta mensagem-sucesso container'>
         Nenhum resultado encontrado. Refaça a pesquisa, se necessário

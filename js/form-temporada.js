@@ -16,6 +16,9 @@ function adicionaEpisodios(array,temporada_id){
 	});
 }
 function buscaEpisodios(serie,temporada,temporada_id){
+	console.log("Série: " + serie);
+	console.log("Temporada: " + temporada);
+	console.log("Temporada id: " + temporada_id);
 	$.ajax({
 		url: "http://www.omdbapi.com/?",
 		data: {"t":serie,"plot":"short","r":"json","season":temporada},
@@ -27,32 +30,18 @@ function buscaEpisodios(serie,temporada,temporada_id){
 	});
 }
 function adicionaTemporada(serie_id,serie_nome,temporada){
-	console.log(serie_id + "--"+serie_nome+"--"+temporada);
 	$.ajax({
 		url: "json/adicionaTemporada.php",
 		method: "POST",
 		dataType: "json",
 		data: {"serie_id":serie_id,"serie_nome":serie_nome,"temporada":temporada},
 		success: function(data){
-			console.log("Inseriu temporada com sucesso");
-			console.log(data);
+			alert("Temporada inserida com sucesso");
+			// console.log(data);
 			buscaEpisodios(serie_nome,temporada,data);
 		},error:function(){
 			console.log("Erro ao inserir temporada");
 		}	
-	});
-}
-function buscaSeriePorNome(nome,temporada){
-	$.ajax({
-		url: "json/buscaSerie.php",
-		method: 'POST',
-		dataType: "json",
-		data: {"filme":nome},
-		success: function(data){
-			adicionaTemporada(data.id,nome,temporada);
-		},error: function(){
-			console.log("Erro ao buscar série");
-		}
 	});
 }
 $(document).ready(function(){
@@ -64,7 +53,10 @@ $(document).ready(function(){
 		validacao[0] = validaCampo("filme",serie_nome);
 		validacao[1] = validaCampo("temporada",temporada);
 		if(serie_nome != "" && temporada != ""){
-			buscaSeriePorNome(serie_nome,temporada);
+			var serie_id = $("#filme").val();
+			var serie_nome = $("#filme :selected").text();
+			var temporada = $("#temporada").val();
+			adicionaTemporada(serie_id,serie_nome,temporada);
 		}
 	});
 });

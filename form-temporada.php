@@ -1,12 +1,17 @@
 <?php
 $tituloAba = "GuiaSeries | Temporada";
 require_once("classes/Usuario.php");
+require_once("classes/Genero.php");
+require_once("classes/Obra.php");
+require_once("classes/Serie.php");
 require_once("banco/conexao.php");
 require_once("banco/SerieDAO.php");
 $usuarioObj = new Usuario();
 $usuarioObj->protegePagina();
 $serie_nome = filter_input(INPUT_POST, 'filme');
 $temporada = filter_input(INPUT_POST, 'temporada');
+$serieDAO = new SerieDAO($conexao);
+$series = $serieDAO->listar();
 /**/
 $tituloAba = "GuiaSeries | Temporada";
 require_once("include/head-bootstrap.php");
@@ -25,7 +30,12 @@ require_once("include/head-bootstrap.php");
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="filme">Série</label>
-					<input type="text" name="filme" id="filme" class="form-control" autofocus>
+					<select name="filme" id="filme" class="form-control">
+						<option value="">Selecione</option>
+						<?php foreach($series as $serie): ?>
+							<option value="<?=$serie->getId()?>"><?=$serie->getNome()?></option>
+						<?php endforeach; ?>
+					</select>
 				</div>
 			</div>
 			<div class="col-md-2">
