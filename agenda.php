@@ -9,9 +9,32 @@
 	$agendaDAO = new AgendaDAO($conexao);
 	$itens = $agendaDAO->listar();
 ?>
+<link rel="stylesheet" type="text/css" href="js/jqueryUI/css/custom-theme/jquery-ui-1.10.4.custom.min.css">
+<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="js/jqueryUI/js/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="https://use.fontawesome.com/b17cc3a995.js"></script>
+<script type="text/javascript" src="js/datePickerBR.js"></script>
+<script type="text/javascript" src="js/validacao.js"></script>
+<script type="text/javascript" src="js/agenda.js"></script>
 <div class="container">
 	<h1 style="margin-top:0.3em">Novos Filmes e Séries</h1>
+	<form action="" method="GET">
+		<br>
+		<label for="tipoPesquisa"><strong>Mostrar Agenda para</strong></label><br>
+		<select name="tipoPesquisa" id="tipoPesquisa" class="field field-small">
+			<option value="">Qualquer Período</option>
+			<option value="7">Próximos 7 dias</option>
+			<option value="30">Próximos 30 dias</option>
+			<option value="periodo">Período Específico</option>
+		</select>
+		<div class="filtragem-data">
+			<label for="dataInicio"><strong>Data de Início</strong></label>
+			<input type="text" name="dataInicio" id="dataInicio" class="field field-tinySmall">
+			<label for="dataFim"><strong>Data Final</strong></label>
+			<input type="text" name="dataFim" id="dataFim" class="field field-tinySmall">
+		</div>
+		<button type="submit" class="button button-info">Pesquisar</button>
+	</form>
 	<?php foreach($itens as $item): ?>
 	<div class="secao-agenda">
 		<figure>

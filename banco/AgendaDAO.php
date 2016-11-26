@@ -3,6 +3,7 @@
  * Classe responsável por fazer o gerenciamento de banco de Dados referente a Agenda (Geral e de Usuário)
  */
 require_once("Armazenavel.php");
+require_once("php/ajudantes.php");
 class AgendaDAO implements Armazenavel{
     private $conexao;
     /*Magic Methods - Construtor*/
@@ -47,6 +48,19 @@ class AgendaDAO implements Armazenavel{
         $query = "SELECT a.id, a.genero_id, g.nome AS genero_nome, a.dataEstreia, DATEDIFF(dataEstreia, NOW()) AS dias_restantes ,a.titulo, a.sinopse, a.arquivo
             FROM agenda a INNER JOIN generos g ON a.genero_id = g.id
             WHERE a.dataEstreia >= NOW()";
+        if(isset($_GET["tipoPesquisa"]) && $_GET["tipoPesquisa"] == 7){
+            $query = $query."AND DATEDIFF(dataEstreia,NOW()) <= 7";
+        }
+        if(isset($_GET["tipoPesquisa"]) && $_GET["tipoPesquisa"] == 30){
+            $query = $query."AND DATEDIFF(dataEstreia,NOW()) <= 30";
+        }
+        if(isset($_GET["tipoPesquisa"]) && $_GET["tipoPesquisa"] == "periodo"){
+            $inicio = filter_input(INPUT_GET, 'dataInicio');
+            $fim = filter_input(INPUT_GET, 'dataFim');
+            $dataInicio = dateToAmerican($inicio);
+            $dataFim = dateToAmerican($fim);
+            $query = $query." AND a.dataEstreia >= '{$dataInicio}' AND a.dataEstreia <= '{$dataFim}'";
+        }
         $query = $query. " ORDER BY dataEstreia ASC";
         $resultado = mysqli_query($this->conexao,$query);
         $agenda = array();
