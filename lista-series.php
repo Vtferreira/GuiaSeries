@@ -145,3 +145,4 @@ if (count($lista_series) == 0) {
     </div>
     <?php require_once("include/rodape.php"); ?>
 <?php endif; ?>
+<script type="text/javascript" src="js/redireciona-filme.js"></script>

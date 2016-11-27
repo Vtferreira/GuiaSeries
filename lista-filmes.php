@@ -219,3 +219,4 @@ if(count($arrayFilmes) == 1){
         }
     });
 </script>
+<script type="text/javascript" src="js/redireciona-filme.js"></script>

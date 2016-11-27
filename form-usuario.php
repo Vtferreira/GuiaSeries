@@ -81,7 +81,7 @@
             <label for="confirmaSenha">Confirme a Senha</label><br>
             <input type="password" name="confirmaSenha" id="confirmaSenha" class="field field-small">
         </div>
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="id" value="<?php if(isset($_POST['id'])){echo $id;} ?>">
         <div class="form-box">
             <button type="submit" class="button button-info">Enviar</button>
             <button type="reset" class="button button-warning">Resetar</button>
