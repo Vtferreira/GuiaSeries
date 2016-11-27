@@ -58,7 +58,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span>
+            <li><a href="form-usuario.php?alteracao=1"><span class="glyphicon glyphicon-user"></span>
             		<?php 
             			if($usuarioObj->estaLogado()): 
             				echo "<strong>{$usuarioObj->usuarioLogado()}</strong>";

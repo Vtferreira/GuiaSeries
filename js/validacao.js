@@ -57,4 +57,32 @@ function comparaDataAgenda(dataForm){
 	}
 	return valido;
 }
+function validaEmail(email){
+    var temArroba = email.indexOf("@");
+    var temPonto = email.indexOf(".com");
+    var valido = true;
+    if((email.length <= 10) || (temArroba == -1) || (temPonto == -1)){
+    	valido = false;
+    }
+    return valido;
+}
+function validaSenha(senha){
+    var valido = true;
+    if(senha.length <= 4){
+    	valido = false;
+    }
+    return valido;
+}
+function comparaSenha(senhaA,senhaB){
+	var valido = true;
+    if(senhaA != senhaB || senhaB == ""){
+    	valido =  false;
+    }
+    return valido;
+}
+function configuraMensagem(campo,mensagem){
+	limpaValidacao(campo);
+	$("#"+campo).css("border","0.3em solid red");
+    $("#"+campo).parent().append($("<span></span>").css("color","rgb(255, 0, 0)").text(""+mensagem+""));
+}
 /*==Fim das funções de validação==*/

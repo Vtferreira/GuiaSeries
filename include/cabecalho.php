@@ -79,7 +79,7 @@
                 $usuarioObj = new Usuario();
                 if ($usuarioObj->estaLogado()) {
                     ?>   
-                    <a href="#" class="usuarioLogado">Logado(a) 
+                    <a href="form-usuario.php?alteracao=1" class="usuarioLogado">Logado(a) 
                         como: <?php echo $usuarioObj->usuarioLogado(); ?></a>|<a href="php/logout.php" class="usuarioLogado">Logout</a>
                         <?php
                     } else {

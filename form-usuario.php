@@ -6,6 +6,11 @@
     require_once("banco/conexao.php");
     require_once("banco/UsuarioDAO.php");
 ?>
+<link rel="stylesheet" type="text/css" href="js/jqueryUI/css/custom-theme/jquery-ui-1.10.4.custom.min.css">
+<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="js/jqueryUI/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="js/datePickerBR.js"></script>
+<script type="text/javascript" src="js/validacao.js"></script>
 <script type="text/javascript" src="js/usuario.js"></script>
 <div class="container form">
     <?php
@@ -15,12 +20,8 @@
         $email = "";
         $sexo = "";
         $dataNasc = "";
-        if(array_key_exists('id', $_POST)){
-           $id = filter_input(INPUT_POST, 'id');
-        }else if(array_key_exists('id', $_GET)){
-            $id = filter_input(INPUT_GET, 'id');
-        }
-        if(array_key_exists('id', $_POST) || array_key_exists('id', $_GET)){
+        if(array_key_exists('id', $_POST) || isset($_GET['alteracao'])){
+            $id = $_SESSION['idUsuario'];
             $usuarioDAO = new UsuarioDAO($conexao);
             $usuarioBusca = $usuarioDAO->consultar($id);
             $tituloForm = "Alterar Cadastro";
@@ -40,7 +41,8 @@
     ?>
     <input type="hidden" id="nomeValido" value="true">
     <input type="hidden" id="emailValido" value="true">
-    <form action="<?php echo $action; ?>" id="formUsuario" method="POST">
+    <form action="<?php echo $action; ?>" id="formulario" method="POST">
+        <input type="hidden" name="id" value="<?php if(isset($_SESSION['idUsuario'])){$_SESSION['idUsuario']; }?>">
         <div class="form-box">
             <label for="nome">Nome</label><br>
             <input type="text" name="nome" id="nome" class="field field-large" 
@@ -71,7 +73,7 @@
         <div class="form-box">
             <label for="dataNasc">Data de Nascimento</label><br>
             <input type="text" name="dataNasc" id="dataNasc" class="field field-small"
-                   value="<?php echo $dataNasc; ?>" placeholder="dd/mm/yyyy">
+                   value="<?php echo $dataNasc; ?>" maxlength="10">
         </div>
         <div class="form-box form-side">
             <label for="senha">Senha</label><br>
@@ -81,9 +83,8 @@
             <label for="confirmaSenha">Confirme a Senha</label><br>
             <input type="password" name="confirmaSenha" id="confirmaSenha" class="field field-small">
         </div>
-        <input type="hidden" name="id" value="<?php if(isset($_POST['id'])){echo $id;} ?>">
         <div class="form-box">
-            <button type="submit" class="button button-info">Enviar</button>
+            <button type="submit" id="enviar" class="button button-info">Enviar</button>
             <button type="reset" class="button button-warning">Resetar</button>
             <button type="button" id="btnCancelar" class="button button-error">Cancelar</button>
         </div>

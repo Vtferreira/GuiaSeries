@@ -16,7 +16,7 @@ $usuarioObj->setId($id);
 $usuarioDAO = new UsuarioDAO($conexao);
 $resultado = $usuarioDAO->alterar($usuarioObj);
 if($resultado){
-    header("Location: ../form-usuario.php?alterou=1&id={$id}");
+    header("Location: ../form-usuario.php?alterou=1&alteracao=1");
 }else{
     header("Location: ../form-usuario.php?alterou=0");
 }
