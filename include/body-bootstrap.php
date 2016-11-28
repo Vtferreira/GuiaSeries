@@ -18,7 +18,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Agenda<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="agenda.php">Geral</a></li>
-                  <li><a href="agenda.php">Minha Agenda</a></li>
+                  <li><a href="agenda.php?listaPorUsuario=1">Minha Agenda</a></li>
                 </ul>
             </li>
             </li>

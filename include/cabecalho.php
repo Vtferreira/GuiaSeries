@@ -25,7 +25,7 @@
                         <a href="#" class="dropBtn">Agenda</a>
                         <div class="dropdown-content">
                             <a href="agenda.php">Geral</a><br>
-                            <a href="agenda.php">Minha Agenda</a>
+                            <a href="agenda.php?listaPorUsuario=1">Minha Agenda</a>
                         </div>
                     </li>
                     <li class="dropdown">
