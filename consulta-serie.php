@@ -43,9 +43,12 @@ if($flagAcompanho != NULL){
     $valueBtnVouAcompanhar = -1;
 }
 ?>
+<link rel="stylesheet" type="text/css" href="js/jqueryUI/css/custom-theme/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" type="text/css" href="css/filmes.css">
 <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
 <script type="text/javascript" src="js/serie-busca.js"></script>
+<script type="text/javascript" src="js/jqueryUI/js/jquery-ui-1.10.4.custom.min.js"></script>
+
 <style type="text/css">
     .tabela{
         width: 96.5%;
@@ -67,6 +70,25 @@ if($flagAcompanho != NULL){
         background: #1874CD;
     }
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#recomendar").on("click",function(){
+			$("#recomendacao-dialog").dialog({
+				resizable: false,
+				modal: true,
+				width: 400,
+				buttons: {
+					"Enviar":function(){
+						document.getElementById("form-recomendacao").submit();
+					},
+					"Cancelar":function(){
+						$(this).dialog("close");
+					}
+				}
+			});
+		});
+	});
+</script>
 <script src="https://use.fontawesome.com/b17cc3a995.js"></script>
 <div class="container filme-consulta">
     <?php if(isset($_GET["adicionou-serie-usuario"]) && $_GET["adicionou-serie-usuario"] == 1): ?>
@@ -78,6 +100,9 @@ if($flagAcompanho != NULL){
         <p class="alerta mensagem-sucesso">
             A série foi removida da sua lista!
         </p>
+    <?php endif; ?>
+    <?php if(isset($_GET['recomendacao']) && $_GET['recomendacao'] == 1): ?>
+    	<p class="alerta mensagem-sucesso">Série recomendada com sucesso!</p>
     <?php endif; ?>
     <section class="filmeInformacoes">
         <figure>
@@ -101,6 +126,11 @@ if($flagAcompanho != NULL){
                     name="assisti" value="<?=$valueBtnVouAcompanhar?>">
                 <i class="<?=$iconeBtnVouAcompanhar?>"><?="&nbsp".$textoBtnVouAcompanhar?></i>
             </button>
+        </form>
+        <form action="php/recomenda-serie.php">
+        	<button type="button" class="button button-warning" id="recomendar">
+        		<i class="fa fa-commenting fa-lg" aria-hidden="true">&nbspRecomendar Série</i>
+        	</button>
         </form>
         <?php endif; ?>
         <p>
@@ -154,4 +184,16 @@ if($flagAcompanho != NULL){
             </table>
         <!-- </div> -->
     </section>
+</div>
+<!-- Dialog para recomendação de série !-->
+<div id="recomendacao-dialog" title="Recomendar Série" style="display: none;">
+	<div class="form-box" style="margin-left: 1em">
+		<form action="php/recomendar-serie.php" method="POST" id="form-recomendacao">
+			<input type="hidden" name="usuario_nome" value="<?=$usuarioObj->usuarioLogado()?>">
+			<input type="hidden" name="serie_id" value="<?=$serie->getId()?>">
+			<input type="hidden" name="total_episodios" value="<?=$totalEpisodios['total_episodios']?>">
+			<label for="email">E-mail</label>
+			<input type="text" name="email" id="email" class="field field-large" autofocus>
+		</form>
+	</div>
 </div>
