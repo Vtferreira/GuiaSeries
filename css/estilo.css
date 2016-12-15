@@ -10,7 +10,7 @@ img[alt="Guia de Séries"]{
 	height: 80px;
 }
 .container{
-	width: 940px;
+	width: 980px;
 	margin: 0 auto;
 }
 /*configurações do cabeçalho da página*/
@@ -72,7 +72,7 @@ input[type="search"]{
 }
 .menu-categorias{
 	text-transform: uppercase;
-	width: 230px;
+	width: 260px;
 	float: left;
 }
 .menu-categorias ul{
@@ -111,7 +111,7 @@ input[type="search"]{
 	font-weight: bold;
 }
 .destaque > img{
-	width: 700px;
+	width: 710px;
 	height: 480px;
 	float: right;
 }
@@ -120,7 +120,7 @@ input[type="search"]{
 	clear: both;
 }
 .painel{
-	width: 430px;
+	width: 450px;
 	margin-bottom: 10px;
 	border-radius: 2px;
 	box-shadow: 1px 1px 4px #999;
@@ -132,7 +132,7 @@ input[type="search"]{
 	margin-right: 5px;
 }
 .painel img{
-	width: 130px;
+	width: 135px;
 	height: 200px;
 }
 .painel h2{
