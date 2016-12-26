@@ -14,6 +14,11 @@ class Ajudantes {
         $dataF = $dataF[2]."-".$dataF[1]."-".$dataF[0];
         $this->dataF = $dataF;
     }
+    public function convertDateToAmerican($dataBrasil){
+        $dataF = explode("/",$dataBrasil);
+        $dataF = $dataF[2]."-".$dataF[1]."-".$dataF[0];
+        return $dataF;
+    }
     public function capturaCharSexo($strSexo){
        $strSexo = strtolower($strSexo);
        if($strSexo == "masculino"){

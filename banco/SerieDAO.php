@@ -257,7 +257,14 @@ class SerieDAO implements Armazenavel {
         $query = "SELECT g.nome AS genero_nome, COUNT(*) as total_genero, SUM(s.totalTemporadas) AS temporada_genero 
         FROM usuarioserie p INNER JOIN series s ON p.serie_id = s.id
         INNER JOIN generos g ON s.genero_id = g.id
-        WHERE p.usuario_id = {$usuario_id} AND p.status = 10 GROUP BY g.nome";
+        WHERE p.usuario_id = {$usuario_id} AND p.status = 10"; 
+        if(isset($_GET["dataInicio"]) && isset($_GET["dataFim"])){
+            $auxiliar = new Ajudantes();
+            $data_inicio = $auxiliar->convertDateToAmerican(filter_input(INPUT_GET,"dataInicio"));
+            $data_fim = $auxiliar->convertDateToAmerican(filter_input(INPUT_GET, "dataFim"));
+            $query = $query." AND (p.data_adicionado >= '{$data_inicio}' AND p.data_adicionado <= '{$data_fim}')";
+        }
+        $query = $query. " GROUP BY g.nome";
         $resultado = mysqli_query($this->conexao,$query);
         $i = 0;
         $generos = array();
@@ -274,8 +281,14 @@ class SerieDAO implements Armazenavel {
         s.avaliacao, s.anoEstreia, s.totalTemporadas FROM `usuarioserie` p 
         INNER JOIN usuarios u ON p.usuario_id = u.id
         INNER JOIN series s ON p.serie_id = s.id
-        WHERE usuario_id = {$usuario_id} AND status = 10
-        ORDER BY {$ordenacao} LIMIT 1";
+        WHERE usuario_id = {$usuario_id} AND status = 10";
+        if(isset($_GET["dataInicio"]) && isset($_GET["dataFim"])){
+            $auxiliar = new Ajudantes();
+            $data_inicio = $auxiliar->convertDateToAmerican(filter_input(INPUT_GET,"dataInicio"));
+            $data_fim = $auxiliar->convertDateToAmerican(filter_input(INPUT_GET, "dataFim"));
+            $query = $query." AND (p.data_adicionado >= '{$data_inicio}' AND p.data_adicionado <= '{$data_fim}')";
+        }
+        $query = $query." ORDER BY {$ordenacao} LIMIT 1";
         // echo $query;
         $resultado = mysqli_query($this->conexao,$query);
         $serie = array();
@@ -304,8 +317,14 @@ class SerieDAO implements Armazenavel {
         INNER JOIN temporadas t ON t.serie_id = s.id
         INNER JOIN episodios e ON e.temporada_id = t.id
         INNER JOIN generos g ON s.genero_id = g.id
-        WHERE p.usuario_id = {$usuario_id} AND p.status = 10
-        GROUP BY g.nome";
+        WHERE p.usuario_id = {$usuario_id} AND p.status = 10";
+        if(isset($_GET["dataInicio"]) && isset($_GET["dataFim"])){
+            $auxiliar = new Ajudantes();
+            $data_inicio = $auxiliar->convertDateToAmerican(filter_input(INPUT_GET,"dataInicio"));
+            $data_fim = $auxiliar->convertDateToAmerican(filter_input(INPUT_GET, "dataFim"));
+            $query = $query." AND (p.data_adicionado >= '{$data_inicio}' AND p.data_adicionado <= '{$data_fim}')";
+        }
+        $query = $query. " GROUP BY g.nome";
         $resultado = mysqli_query($this->conexao,$query);
         $generos = array();
         $i = 0;

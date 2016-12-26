@@ -3,6 +3,7 @@
 	require_once("classes/Obra.php");
 	require_once("classes/Genero.php");
 	require_once("classes/Serie.php");
+	require_once("classes/Ajudantes.php");
 	require_once("banco/conexao.php");
 	require_once("banco/SerieDAO.php");
 	$usuarioObj = new Usuario();
@@ -30,6 +31,13 @@
 			width: 55%;
 		}
 	</style>
+	<script type="text/javascript" src="js/validacao.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			criaDatePicker("dataInicio");
+			criaDatePicker("dataFim");
+		});
+	</script>
 	<!-- INÍCIO GOOGLE CHARTS !-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<?php require_once("js/graficos/quantidade-coluna.php"); ?>
@@ -42,6 +50,31 @@
 <?php require_once("include/body-bootstrap.php"); ?>
 	<div class="container">
 		<h1>Estatísticas - Séries Assistidas</h1>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Filtros de pesquisa</div>
+			<div class="panel-body">
+				<form action="" method="GET">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="dataInicio">Data Inicial</label>
+								<input type="text" name="dataInicio" id="dataInicio" class="form-control" maxlength="10">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="dataFim">Data Final</label>
+								<input type="text" name="dataFim" id="dataFim" class="form-control" maxlength="10">
+							</div>
+						</div>
+						<div class="col-md-4" style="margin-top:1.7em">
+							<button type="submit" class="btn btn-primary">Gerar Gráficos</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<?php if(count($generos) > 0): ?>
 		<div class="panel panel-primary">
 			<div class="panel-heading">Séries por Gênero</div>
 			<div class="panel-body">
@@ -134,11 +167,12 @@
 							<strong>Série com menos temporadas:</strong>
 							<a href="consulta-serie.php?id=<?=$menosTemporadas[0]->getId()?>">
 								<?=$menosTemporadas[0]->getNome()?>
-							</a>, com <?=$menosTemporadas[0]->getTemporadas()?> temporada
+							</a>, com <?=$menosTemporadas[0]->getTemporadas()?> temporadas
 						</div>
 					</div>
 				</p>
 			</div>
 		</div>
+		<?php endif; ?>
 	</div>
 <?php require_once("include/rodape-bootstrap.php"); ?>
