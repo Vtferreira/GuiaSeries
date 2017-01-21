@@ -221,7 +221,11 @@ class FilmeDAO implements Armazenavel{
         return $filmes;
     }
     public function contaFilmes($usuario_id,$status){
-        $query = "SELECT COUNT(*) AS total_filme FROM usuariofilme WHERE usuario_id={$usuario_id} "
+        /*SELECT COUNT(*) AS total_filme FROM usuariofilme u INNER JOIN filmes f ON u.filme_id = f.id WHERE usuario_id=1 AND status_filme='Assistido'
+*/
+        $query = "SELECT COUNT(*) AS total_filme FROM usuariofilme u"
+        ." INNER JOIN filmes f ON u.filme_id = f.id"
+        ." WHERE usuario_id={$usuario_id} "
         . "AND status_filme='{$status}'";
         $resultado = mysqli_query($this->conexao,$query);
         $contagem = mysqli_fetch_assoc($resultado);
