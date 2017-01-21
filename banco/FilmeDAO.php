@@ -182,8 +182,9 @@ class FilmeDAO implements Armazenavel{
             $excluiu = $this->deletaFilmeUsuario($vetor["usuario_id"],$vetor["filme_id"]);
             echo $excluiu;
         }
-        $query = "INSERT INTO usuariofilme(usuario_id, filme_id, status_filme) "
-                . "VALUES ({$vetor["usuario_id"]},{$vetor["filme_id"]},'{$vetor["status_filme"]}')";
+        $query = "INSERT INTO usuariofilme(usuario_id, filme_id, status_filme,data) "
+                . "VALUES ({$vetor["usuario_id"]},{$vetor["filme_id"]},'{$vetor["status_filme"]}','{$vetor["data"]}')";
+        echo $query;
         $resultado = mysqli_query($this->conexao,$query);
         return $resultado;
     }

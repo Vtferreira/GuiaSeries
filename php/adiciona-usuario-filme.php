@@ -13,6 +13,7 @@ $vetorIns = array();
 $vetorIns["usuario_id"] = $_SESSION["idUsuario"];
 $vetorIns["filme_id"] = filter_input(INPUT_POST,"filme_id");
 $vetorIns["status_filme"] = filter_input(INPUT_POST, 'assisti');
+$vetorIns["data"] = date("Y-m-d");
 $filmeDAO = new FilmeDAO($conexao);
 if($vetorIns["status_filme"] == "Assistido" || $vetorIns["status_filme"] == "Vou Assistir"){
     $resultado = $filmeDAO->insereUsuarioFilme($vetorIns);
